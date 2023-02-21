@@ -19,11 +19,10 @@ where location like 'canada'
 order by 1,2
 
 
---Looking at total cases vs population in
+--Looking at total cases vs population
 --shows what percentage of population got covid
 select location, date, population, total_cases, (total_cases/population) * 100 as PercentPopulationInfected
 from PortfolioProject..CovidDeaths
---where location like 'canada'
 order by 1,2
 
 
@@ -52,12 +51,12 @@ order by TotalDeathCount desc
 
 
 --GLOBAL NUMBERS
---select date, SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(new_cases) * 100 as DeathPercentage
---from PortfolioProject..CovidDeaths
-----where location like 'canada'
---where continent is not null
---group by date
---order by 1,2
+select date, SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(new_cases) * 100 as DeathPercentage
+from PortfolioProject..CovidDeaths
+--where location like 'canada'
+where continent is not null
+group by date
+order by 1,2
 
 
 --Looking at total population vs vaccinations
